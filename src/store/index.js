@@ -11,15 +11,15 @@ const store = new Vuex.Store({
     },
     mutations: {
         setCatalog: (state, response) => {
-            state.catalog = response;
+            state.catalog = response
         },
         changeCatalogLoaded: (state) => {
-            state.catalogLoaded = true;
+            state.catalogLoaded = true
         }
     },
     getters: {
         catalog: (state) => {
-            return state.catalog;
+            return state.catalog
         },
     },
     actions: {

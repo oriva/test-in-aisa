@@ -2,7 +2,7 @@
   <div>
     <v-navigation-drawer
         v-model="drawer"
-        absolute
+        fixed
         bottom
         temporary
     >
@@ -10,10 +10,10 @@
           nav
           dense
       >
-        <v-list-item-group
-            active-class="deep-purple--text text--accent-4"
-        >
-          <v-list-item to="/">
+        <v-list-item-group>
+          <v-list-item
+              to="/"
+          >
             <v-list-item-icon>
               <v-icon>mdi-home</v-icon>
             </v-list-item-icon>
@@ -30,11 +30,18 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
-        color="indigo"
-        dark
+        app
+        fixed
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon
+          @click.stop="drawer = !drawer"
+      ></v-app-bar-nav-icon>
       <v-toolbar-title>Тестовое задание AISA</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-switch
+          label="Night mode"
+          v-model="isThemeDark"
+      ></v-switch>
     </v-app-bar>
   </div>
 </template>
@@ -42,7 +49,27 @@
 export default {
   name: 'PublicLayoutHeader',
   data: () => ({
-    drawer: null
-  })
+    drawer: null,
+    isThemeDark: JSON.parse(localStorage.getItem("isThemeDark"))
+  }),
+  created() {
+    this.$vuetify.theme.dark = this.isThemeDark
+  },
+  watch: {
+    isThemeDark: function () {
+      localStorage.setItem("isThemeDark", this.isThemeDark)
+      this.$vuetify.theme.dark = this.isThemeDark
+    }
+  }
 }
 </script>
+<style lang="scss">
+.v-toolbar__content {
+  .v-messages {
+    display: none;
+  }
+  .v-input__slot {
+    margin-bottom: 0;
+  }
+}
+</style>
