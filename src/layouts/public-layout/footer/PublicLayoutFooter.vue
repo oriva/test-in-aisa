@@ -1,9 +1,9 @@
 <template>
-  <footer>
+  <v-footer app>
     <div>
       footer
     </div>
-  </footer>
+  </v-footer>
 </template>
 <script>
 export default {

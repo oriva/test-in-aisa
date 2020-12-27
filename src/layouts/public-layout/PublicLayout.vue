@@ -1,13 +1,16 @@
 <template>
-  <v-main>
+  <v-app id="inspire">
     <PublicLayoutHeader/>
-    <slot></slot>
+    <v-main>
+      <slot></slot>
+    </v-main>
     <PublicLayoutFooter/>
-  </v-main>
+  </v-app>
 </template>
 <script>
 import PublicLayoutHeader from './header/'
 import PublicLayoutFooter from './footer/'
+
 export default {
   name: 'PublicLayout',
   components: {
