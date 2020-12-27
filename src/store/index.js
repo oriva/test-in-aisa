@@ -21,6 +21,9 @@ const store = new Vuex.Store({
         catalog: (state) => {
             return state.catalog
         },
+        catalogSlider: (state) => {
+            return state.catalog.slice(0,4)
+        }
     },
     actions: {
         async setJsonCatalog({commit, url = 'https://next.json-generator.com/api/json/get/4Jq5woxat'}) {
